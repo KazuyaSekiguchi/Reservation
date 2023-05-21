@@ -1,0 +1,30 @@
+ <h3>施設詳細</h3>
+ 
+ <table>
+   <tr>
+     <th>施設画像</th>
+     <td><%= @room.room_image %></td>
+   </tr>
+   <tr>
+     <th>施設名</th>
+     <td><%= @room.room_name %></td>
+   </tr>
+   <tr>
+     <th>紹介文</th>
+     <td><%= @room.introduction %></td>
+   </tr>
+   <tr>
+     <th>料金</th>
+     <td><%= @room.price %></td>
+   </tr>
+   <tr>
+     <th>住所</th>
+     <td><%= @room.address %></td>
+   </tr>
+ </table>
+ 
+ <div>
+   <ul>
+     <li><%= link_to "施設一覧に戻る", :rooms %></li>
+   </ul>
+ </div>
