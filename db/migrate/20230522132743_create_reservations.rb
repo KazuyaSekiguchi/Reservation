@@ -1,6 +1,6 @@
-class CreateReserves < ActiveRecord::Migration[6.1]
+class CreateReservations < ActiveRecord::Migration[6.1]
   def change
-    create_table :reserves do |t|
+    create_table :reservations do |t|
       t.string :check_in
       t.string :check_out
       t.integer :number_of_people

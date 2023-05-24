@@ -61,4 +61,12 @@ gem 'devise'
 
 gem 'carrierwave'
 
+gem 'mini_magick'
+
 gem 'haml-rails'
+
+gem 'rename'
+
+gem "aws-sdk-s3", require: false
+
+gem "image_processing", ">= 1.2"

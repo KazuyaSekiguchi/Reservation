@@ -6,4 +6,8 @@ class Room < ApplicationRecord
       Room.all
     end
   end
+  
+  has_one_attached :room_image, service: :s3
 end
+
+

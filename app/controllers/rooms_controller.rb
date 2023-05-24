@@ -12,7 +12,8 @@ class RoomsController < ApplicationController
   end
  
   def create
-    @room = Room.new(params.require(:room).permit(:room_image, :room_name, :introduction, :price, :address))
+    @room = Room.new(params.require(:room).permit(:room_name, :introduction, :price, :address))
+    @room = Room.attach(params[:room_image])
     if @room.save
       flash[:notice] = "施設を新規登録しました"
       redirect_to :rooms
