@@ -7,7 +7,7 @@ class Room < ApplicationRecord
     end
   end
   
-  has_one_attached :room_image, service: :s3
+  has_one_attached :room_image
 end
 
 

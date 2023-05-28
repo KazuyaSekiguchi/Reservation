@@ -12,10 +12,8 @@ class RoomsController < ApplicationController
   end
  
   def create
-    @room = Room.new(params.require(:room).permit(:room_name, :introduction, :price, :address))
-    @room = Room.attach(params[:room_image])
+    @room = Room.new(params.require(:room).permit(:room_name, :room_image, :introduction, :price, :address).merge(user_id: current_user.id))
     if @room.save
-      flash[:notice] = "施設を新規登録しました"
       redirect_to :rooms
     else
       render "new"
@@ -35,5 +33,9 @@ class RoomsController < ApplicationController
   end
  
   def destroy
+    @room = Room.find(params[:id])
+    @room.destroy
+    flash[:notice] = "ユーザーを削除しました"
+    redirect_to :rooms
   end
 end

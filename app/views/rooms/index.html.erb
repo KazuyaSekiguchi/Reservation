@@ -19,6 +19,7 @@
        <th>宿泊料金</th>
        <th>作成日</th>
        <th>施設詳細</th>
+       <th>削除</th>
      </tr>
    </thead>
  
@@ -26,13 +27,17 @@
      <% @rooms.each do |room| %>
        <tr>
          <td><%= room.id %></td>
-         <td><%= room.room_image %></td>
+         <td><%= room.room_image.url %></td>
          <td><%= room.room_name %></td>
+         <td><%= @room.room_image.url %></td>
          <td><%= room.introduction %></td>
          <td><%= room.price %></td>
          <td><%= room.created_at.to_s(:datetime_jp) %></td>
          <td>
          <%= link_to "参照", room %>
+         </td>
+         <td>
+          <%= link_to "削除", room, method: :delete, data: { confirm: "本当に削除しますか？" } %>
          </td>
        </tr>
      <% end %>
