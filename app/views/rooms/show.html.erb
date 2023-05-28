@@ -3,7 +3,7 @@
  <table>
    <tr>
      <th>施設画像</th>
-     <td><%= image_tag @room.room_image if @room.room_image.attached? %></td>
+     <td><%= image_tag @room.image %></td>
    </tr>
    <tr>
      <th>施設名</th>
@@ -23,8 +23,26 @@
    </tr>
  </table>
  
+ <h3>新規施設登録</h3>
+ 
+ <%= form_with model: @reservation do |f| %>
+   <table>
+     <tr>
+       <th><%= f.label :checkin ,"チェックイン日" %></th>
+       <td><%= f.text_field :checkin %></td>
+     </tr>
+     <tr>
+       <th><%= f.label :checkout ,"チェックアウト日" %></th>
+       <td><%= f.text_field :checkout %></td>
+     </tr>
+     <tr>
+       <th><%= f.label :number_of_people ,"人数" %></th>
+       <td><%= f.text_field :number_of_people %></td>
+     </tr>
+   </table>
  <div>
    <ul>
+     <li><%= f.submit "登録完了する"%></li>
      <li><%= link_to "戻る", :back %></li>
    </ul>
  </div>

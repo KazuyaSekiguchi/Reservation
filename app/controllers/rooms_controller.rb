@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.all
+    @reservations = Reservation.all
   end
   
   def search
@@ -12,7 +13,7 @@ class RoomsController < ApplicationController
   end
  
   def create
-    @room = Room.new(params.require(:room).permit(:room_name, :room_image, :introduction, :price, :address).merge(user_id: current_user.id))
+    @room = Room.new(params.require(:room).permit(:room_name, :image, :introduction, :price, :address))
     if @room.save
       redirect_to :rooms
     else

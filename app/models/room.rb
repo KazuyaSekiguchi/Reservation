@@ -7,7 +7,9 @@ class Room < ApplicationRecord
     end
   end
   
-  has_one_attached :room_image
+  has_one_attached :image
+  
+  has_many :reservations
 end
 
 
