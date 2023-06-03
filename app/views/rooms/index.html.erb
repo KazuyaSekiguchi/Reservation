@@ -27,10 +27,10 @@
      <% @rooms.each do |room| %>
        <tr>
          <td><%= room.id %></td>
-         <td><%= image_tag room.image %></td>
+         <td><%= image_tag room.image, :size =>'150x100' %></td>
          <td><%= room.room_name %></td>
          <td><%= room.introduction %></td>
-         <td><%= room.price %></td>
+         <td><%= room.price %>円/日</td>
          <td><%= room.created_at.to_s(:datetime_jp) %></td>
          <td>
          <%= link_to "参照", room %>
@@ -44,3 +44,4 @@
  </table>
  
  <p><%= link_to "新規施設登録", :new_room %></p>
+ <p><%= link_to "予約一覧", reservations_path %></p>

@@ -1,17 +1,28 @@
 class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
+    @rooms = Room.all
   end
  
   def new
     @reservation = Reservation.new
   end
- 
+
+  def confirm
+    @reservation = Reservation.new(reservation_params)
+    binding.pry
+    #@reservation = Reservation.find(params[:id])
+    #@reservation.assign_attributes(reservation_params)
+		#if @reservation.invalid?
+		#	render :new
+		#end
+  end
+
   def create
     @reservation = Reservation.new(params.require(:reservation).permit(:check_in, :check_out, :number_of_people, :payment_fee, :room_id, :image))
     if @reservation.save
       flash[:notice] = "宿泊予約が完了しました"
-      redirect_to :reservation
+      redirect_to :reservations
     else
       @reservation = Reservation.find_by(params[:reservation][:room_id])
       render "rooms/show"
@@ -29,4 +40,12 @@ class ReservationsController < ApplicationController
  
   def destroy
   end
+  
+  private
+   def reservation_params
+     binding.pry
+     params.permit(:check_in, :check_out, :number_of_people, :payment_fee, :room_id)
+   end
+  
+  
 end

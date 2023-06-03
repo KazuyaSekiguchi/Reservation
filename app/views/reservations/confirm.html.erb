@@ -1,0 +1,9 @@
+ <h3>予約確認</h3>
+
+ <%= form_with model: reservation, local: true do |f| %>
+  <p>チェックイン日: <%= reservation.room.check_in %></p>
+  <p>チェックアウト日: <%= reservation.room.check_out %></p>
+  <p>宿泊日数: <%= (reservation.check_out - reservation.check_in).to_i %></p>
+  <p>人数: <%= reservation.number_of_people %></p>
+  <p>支払い金額: <%= reservation.room.price.to_i * reservation.number_of_people * (reservation.check_out - reservation.check_in).to_i %>円</p>
+ <% end %>

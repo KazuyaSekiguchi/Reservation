@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'reservations/index'
-  get 'reserves/index'
-  get 'reserve/index'
-  get 'rooms/index'
   devise_for :users
   resources :users do
     member { get :user_icon }
@@ -15,4 +11,5 @@ Rails.application.routes.draw do
     end
   end
   resources :reservations
+　post 'reservation/confirm'
 end

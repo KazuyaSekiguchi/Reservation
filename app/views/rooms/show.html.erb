@@ -4,7 +4,6 @@
    <tr>
      <th>施設画像</th>
      <td><%= image_tag @room.image %></td>
-     <%= binding.pry %>
    </tr>
    <tr>
      <th>施設名</th>
@@ -24,9 +23,9 @@
    </tr>
  </table>
  
- <h3>新規施設登録</h3>
+ <h3>予約登録</h3>
  
- <%= form_with model: @reservation do |f| %>
+ <%= form_with model: @reservation, method: :post, url: reservation_confirm_path do |f| %>
    <table>
      <tr>
        <th><%= f.label :check_in ,"チェックイン日" %></th>
@@ -41,9 +40,10 @@
        <td><%= f.text_field :number_of_people %></td>
      </tr>
    </table>
+   <%= f.hidden_field :room_id, value: @room.id %>
   <div>
    <ul>
-     <li><%= f.submit "登録完了する"%></li>
+     <li><%= f.submit "予約確認画面へ"%></li>
      <li><%= link_to "戻る", :back %></li>
    </ul>
   </div>

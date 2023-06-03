@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_28_124730) do
+ActiveRecord::Schema.define(version: 2023_06_02_131331) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 2023_05_28_124730) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.string "check_in"
-    t.string "check_out"
+    t.date "check_in"
+    t.date "check_out"
     t.integer "number_of_people"
     t.integer "stay_days"
     t.integer "payment_fee"
