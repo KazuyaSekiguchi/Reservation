@@ -9,8 +9,10 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
+    #@reservation = Reservation.new(params.require(:reservation).permit(:check_in, :check_out, :number_of_people, :payment_fee, :room_id ))
     @reservation = Reservation.new(reservation_params)
-    binding.pry
+    
+    #render :new if @reservation.invalid?
     #@reservation = Reservation.find(params[:id])
     #@reservation.assign_attributes(reservation_params)
 		#if @reservation.invalid?
@@ -43,7 +45,6 @@ class ReservationsController < ApplicationController
   
   private
    def reservation_params
-     binding.pry
      params.permit(:check_in, :check_out, :number_of_people, :payment_fee, :room_id)
    end
   
