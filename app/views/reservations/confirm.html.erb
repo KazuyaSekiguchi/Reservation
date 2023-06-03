@@ -1,0 +1,7 @@
+ <h3>予約確認</h3>
+
+ <%= form_with model: @reservation, local: true do |f| %>
+  <p>チェックイン日: <%= @reservation.check_in %></p>
+  <p>チェックアウト日: <%= @reservation.check_out %></p>
+  <p>人数: <%= @reservation.number_of_people %></p>
+ <% end %>

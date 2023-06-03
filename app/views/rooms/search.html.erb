@@ -1,0 +1,33 @@
+<h1>検索結果</h1>
+ 
+<%= form_with url: search_rooms_path, local: true, method: :get, class: "search-form" do |f| %>
+  <%= f.text_field :keyword, placeholder: "住所で検索する", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
+<% end %>
+ 
+ <table>
+   <thead>
+     <tr>
+       <th>施設名</th>
+       <th>紹介文</th>
+       <th>宿泊料金</th>
+       <th>住所</th>
+     </tr>
+   </thead>
+ 
+   <tbody>
+     <% @rooms.each do |room| %>
+       <tr>
+         <td><%= room.room_name %></td>
+         <td><%= room.introduction %></td>
+         <td><%= room.price %></td>
+         <td><%= room.address %></td>
+         <td>
+         <%= link_to "参照", room %>
+         </td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+ 
+ <p><%= link_to "施設一覧に戻る", :rooms %></p>

@@ -1,0 +1,47 @@
+ <h3>施設一覧</h3>
+ 
+ <% if flash[:notice] %>
+   <p class="notice"><%= flash[:notice] %></p>
+ <% end %>
+ 
+<%= form_with url: search_rooms_path, local: true, method: :get, class: "search-form" do |f| %>
+  <%= f.text_field :keyword, placeholder: "住所で検索する", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
+<% end %>
+ 
+ <table>
+   <thead>
+     <tr>
+       <th>id</th>
+       <th>施設画像</th>
+       <th>施設名</th>
+       <th>紹介文</th>
+       <th>宿泊料金</th>
+       <th>作成日</th>
+       <th>施設詳細</th>
+       <th>削除</th>
+     </tr>
+   </thead>
+ 
+   <tbody>
+     <% @rooms.each do |room| %>
+       <tr>
+         <td><%= room.id %></td>
+         <td><%= image_tag room.image, :size =>'150x100' %></td>
+         <td><%= room.room_name %></td>
+         <td><%= room.introduction %></td>
+         <td><%= room.price %>円/日</td>
+         <td><%= room.created_at.to_s(:datetime_jp) %></td>
+         <td>
+         <%= link_to "参照", room %>
+         </td>
+         <td>
+          <%= link_to "削除", room, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+         </td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+ 
+ <p><%= link_to "新規施設登録", :new_room %></p>
+ <p><%= link_to "予約一覧", reservations_path %></p>
